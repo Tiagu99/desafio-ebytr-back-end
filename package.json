@@ -1,0 +1,25 @@
+{
+  "name": "desafio-ebytr-back-end",
+  "version": "1.0.0",
+  "description": "Back-end do projeto/desafio blitz da Trybe.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tiagu99/desafio-ebytr-back-end.git"
+  },
+  "author": "Tiago da Silva Moreira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tiagu99/desafio-ebytr-back-end/issues"
+  },
+  "homepage": "https://github.com/Tiagu99/desafio-ebytr-back-end#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.3.1"
+  }
+}
