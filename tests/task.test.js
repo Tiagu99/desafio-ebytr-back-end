@@ -29,8 +29,21 @@ describe('Testa as rotas referente as "tasks".', ()=> {
     await DBServer.stop();
   });
 
-  describe('POST', () => {
+  describe('POST', async () => {
     response = await chai.request(server)
-     
+    .post('/')
+    .send({
+      task: 'Emitir relatório do balano mensal'
+    });
+
+    it('Retorna o código de status 201', () => {
+      expect(response).to.have.status(201);
+    });
+
+    it('Retorna no no corpo o objeto criado com sua ID', () =>{
+      expect(response.body).to.be.a('object');
+      expect(response.body).to.have.property('_id');
+    });
+
   });
 });
