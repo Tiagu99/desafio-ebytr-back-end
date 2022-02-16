@@ -4,7 +4,7 @@
   "description": "Back-end do projeto/desafio blitz da Trybe.",
   "main": "./src/api/server.js",
   "scripts": {
-    "start": "node.",
+    "start": "node .",
     "test": "test"
   },
   "repository": {
