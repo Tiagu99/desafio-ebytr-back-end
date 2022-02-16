@@ -54,6 +54,8 @@ describe('Testa as rotas referente as "tasks".', async () => {
   describe('GET', async () => {
     it('Retorna um array com as tasks', () => {
       expect(listRequest.body).to.have.length(1);
+      expect(listRequest.body[0]).to.have.property('task');
+      expect(listRequest.body[0].task).to.be.equal('Emitir relatório do balano mensal.');
     });
   });
 });
