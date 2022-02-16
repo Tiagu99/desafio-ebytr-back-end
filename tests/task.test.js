@@ -14,7 +14,7 @@ const DBServer = new MongoMemoryServer();
 describe('Testa as rotas referente as "tasks".', ()=> {
   let response = {};
 
-  beforeAll(async () => {
+  before(async () => {
     const URLMock = await DBServer.getUri();
     const connectionMock = await MongoClient.connect(URLMock,
       { userNewUrlParser: true, useUnifieldTopology: true }
@@ -24,7 +24,7 @@ describe('Testa as rotas referente as "tasks".', ()=> {
       .resolves(connectionMock);
   });
 
-  afterAll(async () => {
+  after(async () => {
     MongoClient.connect.restore();
     await DBServer.stop();
   });
