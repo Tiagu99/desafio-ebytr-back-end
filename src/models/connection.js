@@ -12,7 +12,7 @@ module.exports = async () => {
     connection = (await MongoClient.connect(
       MONGO_DB_URL,
       {
-        useNewUrlParse: true,
+        useNewUrlParser: true,
         useUnifiedTopology: true,
       },
     )).db(DB_NAME);
