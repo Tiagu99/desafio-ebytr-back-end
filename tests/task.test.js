@@ -31,9 +31,9 @@ describe('Testa as rotas referente as "tasks".', ()=> {
 
   describe('POST', async () => {
     response = await chai.request(server)
-    .post('/')
-    .send({
-      task: 'Emitir relatório do balano mensal'
+      .post('/')
+      .send({
+        task: 'Emitir relatório do balano mensal'
     });
 
     it('Retorna o código de status 201', () => {
@@ -45,5 +45,13 @@ describe('Testa as rotas referente as "tasks".', ()=> {
       expect(response.body).to.have.property('_id');
     });
 
+  });
+  describe('GET', async () => {
+    response = await chai.request(server)
+      .get('/');
+
+    it('Retorna um array com as tasks', () => {
+      expect(response.body).length(1);
+    });
   });
 });
