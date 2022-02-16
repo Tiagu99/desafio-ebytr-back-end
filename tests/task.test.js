@@ -31,7 +31,7 @@ describe('Testa as rotas referente as "tasks".', async () => {
         task: 'Emitir relatório do balano mensal.'
       });
     listRequest = await chai.request(server)
-      .get('/');
+      .get('/task');
   });
   
   after(async () => {
@@ -52,10 +52,8 @@ describe('Testa as rotas referente as "tasks".', async () => {
 
   });
   describe('GET', async () => {
-   
-
     it('Retorna um array com as tasks', () => {
-      expect(response.body).length(1);
+      expect(listRequest.body).to.have.length(1);
     });
   });
 });
