@@ -9,33 +9,38 @@ const server = require('../src/api/app');
 chai.use(chaiHttp);
 
 const { expect } = chai;
-const DBServer = new MongoMemoryServer();
 
-describe('Testa as rotas referente as "tasks".', ()=> {
+describe('Testa as rotas referente as "tasks".', async () => {
   let response = {};
+  let listRequest = [];
+  const DBServer = new MongoMemoryServer();
 
+  
   before(async () => {
     const URLMock = await DBServer.getUri();
     const connectionMock = await MongoClient.connect(URLMock,
-      { userNewUrlParser: true, useUnifieldTopology: true }
+      { useNewUrlParser: true, useUnifiedTopology: true },
     );
     
     sinon.stub(MongoClient, 'connect')
-      .resolves(connectionMock);
-  });
+    .resolves(connectionMock);
 
+    response = await chai.request(server)
+      .post('/task')
+      .send({
+        task: 'Emitir relatório do balano mensal.'
+      });
+    listRequest = await chai.request(server)
+      .get('/');
+  });
+  
   after(async () => {
     MongoClient.connect.restore();
     await DBServer.stop();
   });
-
+  
   describe('POST', async () => {
-    response = await chai.request(server)
-      .post('/')
-      .send({
-        task: 'Emitir relatório do balano mensal'
-    });
-
+    
     it('Retorna o código de status 201', () => {
       expect(response).to.have.status(201);
     });
@@ -47,8 +52,7 @@ describe('Testa as rotas referente as "tasks".', ()=> {
 
   });
   describe('GET', async () => {
-    response = await chai.request(server)
-      .get('/');
+   
 
     it('Retorna um array com as tasks', () => {
       expect(response.body).length(1);
