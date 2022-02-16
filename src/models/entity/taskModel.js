@@ -10,4 +10,5 @@ const create = async (doc) => {
 
 module.exports = {
   getAll,
+  create,
 };
