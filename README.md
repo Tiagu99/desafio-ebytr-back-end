@@ -36,6 +36,8 @@ Back-end desenvolvido para um desafio enquanto cursava a Trybe, no intuito de co
 
 NodeJS v16.6.2, MongoDB v4.4.11
 
+Para iniciar a aplicação, primeiro use o comando `npm install` para instalar dependencias do projeto, depois o comando `npm start` para iniciar a aplicação
+
 ## :rocket: Tecnologias Utilizadas 
 
 O projeto foi desenvolvido utilizando as seguintes tecnologias
